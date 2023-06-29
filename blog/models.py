@@ -18,3 +18,7 @@ class Blog(models.Model):
     updated_at = models.DateField(auto_now=True)
     author = models.CharField(max_length=75)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    
+    @property
+    def category_name(self):
+        return self.category.name
