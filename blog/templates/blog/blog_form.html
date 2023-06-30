@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static 'assets/img/CreateBlog.jpg' %}');">
+    <div class="container position-relative px-10 px-lg-10">
+        <div class="row gx-8 gx-lg-8 justify-content-center">
+            <div class="col-md-20 col-lg-16 col-xl-16">
+                <div class="page-heading">
+                    <h1 style="font-size: 2.5em; text-align: center;">Create Blog</h1>
+                    <span class="subheading">Write your thoughts below!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<form method="POST" class="mx-auto">
+    {% csrf_token %}
+    {{ form | safe }}
+    <button type="submit" class="btn btn-primary my-5">Submit</button>
+</form>
+{% if form.errors %}
+<div class-="alert alert-danger my-5">
+    {{form.errors.title.as_text}}
+</div>
+
+{% endif %}
+{% endblock %}
