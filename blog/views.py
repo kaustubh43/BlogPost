@@ -5,7 +5,6 @@ from .models import Blog
 # Create your views here.
 
 
-
 class BlogDetialView(DetailView):
     """View Blog Details of single Blog"""
     model = Blog
