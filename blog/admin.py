@@ -5,7 +5,7 @@ from . import models
 # Register your models here.
 class BlogAdmin(admin.ModelAdmin):
     """To show limited fields of blog table in admin end point"""
-    list_display = ('title', 'created_at', 'author')
+    list_display = ('title', 'created_at', 'author', 'created_date_time')
 
 class CategoryAdmin(admin.ModelAdmin):
     """To show categories fields in admin end point"""

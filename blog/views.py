@@ -18,3 +18,4 @@ class BlogListView(ListView):
     model = Blog
     context_object_name = 'blogs'
     template_name = 'blog/blog_list.html'
+    ordering = ['-created_date_time']

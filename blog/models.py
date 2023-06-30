@@ -15,6 +15,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200, unique=True)
     text = models.TextField(default=' ')
     created_at = models.DateField(auto_now_add=True)
+    created_date_time = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     author = models.CharField(max_length=75)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
