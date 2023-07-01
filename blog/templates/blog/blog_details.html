@@ -39,4 +39,24 @@
     </div>
 </article>
 
+
+<!-- Update Blog button -->
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary my-5" onclick="updateLink()">Update</button>
+    <script>
+        function updateLink() {
+            window.location.href = "{% url 'blog.edit' pk=blog.id %}";
+        }
+    </script>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary my-5" onclick="deleteLink()">Delete</button>
+    <script>
+        function deleteLink() {
+            window.location.href = "{% url 'blog.delete' pk=blog.id %}";
+        }
+    </script>
+</div>
+
 {% endblock %}
