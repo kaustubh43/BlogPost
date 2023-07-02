@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<header class="masthead" style="background-image: url('{% static 'assets/img/signup.jpg' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Signup</h1>
+                    <span class="subheading">We are excited to have you on out platform!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<form method="POST" style="text-align: left; margin: 0 auto; width: 600px;">
+    {% csrf_token %}
+    {{form.as_p}}
+    <a href="{% url 'login' %}">
+        <input class="btn btn-secondary" type="submit" name="Submit" />
+    </a>
+</form>
+
+{% endblock%}
