@@ -57,6 +57,14 @@
 
 
     {% endblock %}
+
+    {% if user.is_authenticated %}
+    <div class="d-flex justify-content-center">
+        <p>Logged in as {{user}}</p>
+    </div>
+    {% else %}
+    {% endif %}
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

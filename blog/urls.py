@@ -9,6 +9,7 @@ urlpatterns = [
     path('blog/new', views.BlogCreateView.as_view(),name='blog.create'),
     path('blog/<int:pk>/edit', views.BlogUpdateView.as_view(),name='blog.edit'),
     path('blog/<int:pk>/delete', views.BlogDeleteView.as_view(),name='blog.delete'),
+    path('blog/<int:pk>/accessdenied', views.AccessDenied.as_view(),name='blog.accessdenied'),
 ]
 
 handler404 = 'blog.views.error_404_view'

@@ -1,10 +1,19 @@
 # from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from typing import Any
+from django.forms.widgets import HiddenInput
+from django.http import HttpRequest, HttpResponse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from .models import Blog
-from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.template import Context, loader
 from django.shortcuts import render
 from .forms import BlogForms
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class AccessDenied(TemplateView):
+    template_name = 'blog/denied.html'
+
 
 class BlogDeleteView(DeleteView):
     model = Blog
@@ -12,20 +21,34 @@ class BlogDeleteView(DeleteView):
     template_name = 'blog/blog_delete.html'
 
 
-
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(LoginRequiredMixin, UpdateView):
     model = Blog
     form_class = BlogForms
     success_url = '/blogs/blog'
     template_name = 'blog/blog_form_edit.html'
+    login_url = '/login'
+    
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        if self.object.author == self.request.user:
+            self.object.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else: 
+            return HttpResponseRedirect('accessdenied')
 
 
-class BlogCreateView(CreateView):
+class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     form_class = BlogForms
     success_url = '/blogs/blog'
-    login_url = '/admin'
+    login_url = '/login'
     template_name = 'blog/blog_form.html'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 # Create your views here.

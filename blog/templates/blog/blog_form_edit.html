@@ -27,10 +27,6 @@
         {{form.text}}
     </div>
     <div class="form-floating">
-        <label for="author" class="form-label">Author</label>
-        {{form.author}}
-    </div>
-    <div class="form-floating">
         <label for="category" class="form-label">Category</label>
         {{form.category}}
     </div>
@@ -39,8 +35,12 @@
     </div>
 </form>
 {% if form.errors %}
-<div class-="alert alert-danger my-5">
-    {{form.errors.title.as_text}}
+<div class="alert alert-danger my-5">
+    {% for field_errors in form.errors %}
+    {% for error in field_errors %}
+    {{ error }}
+    {% endfor %}
+    {% endfor %}
 </div>
 
 {% endif %}

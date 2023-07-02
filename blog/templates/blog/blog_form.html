@@ -20,28 +20,27 @@
     {% csrf_token %}
     <div class="form-floating">
         <label for="title" class="form-label">Title</label>
-        {{form.title}}
+        {{ form.title }}
     </div>
     <div class="form-floating">
         <label for="text" class="form-label">Body</label>
-        {{form.text}}
-    </div>
-    <div class="form-floating">
-        <label for="author" class="form-label">Author</label>
-        {{form.author}}
+        {{ form.text }}
     </div>
     <div class="form-floating">
         <label for="category" class="form-label">Category</label>
-        {{form.category}}
+        {{ form.category }}
     </div>
     <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary my-5">Submit</button>
     </div>
 </form>
 {% if form.errors %}
-<div class-="alert alert-danger my-5">
-    {{form.errors.title.as_text}}
+<div class="alert alert-danger my-5">
+    {% for field_errors in form.errors %}
+    {% for error in field_errors %}
+    {{ error }}
+    {% endfor %}
+    {% endfor %}
 </div>
-
 {% endif %}
 {% endblock %}
