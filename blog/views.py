@@ -21,6 +21,16 @@ class BlogDeleteView(DeleteView):
     template_name = 'blog/blog_delete.html'
 
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.author == request.user:
+            self.object.delete()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return HttpResponseRedirect('accessdenied') 
+
+
+
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     model = Blog
     form_class = BlogForms
