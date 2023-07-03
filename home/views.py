@@ -17,6 +17,7 @@ class SignupView(CreateView):
 
 
 class LogoutInterfaceView(LogoutView):
+    "Login Inteface"
     template_name = 'home/logout.html'
 
 
