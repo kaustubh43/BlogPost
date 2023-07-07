@@ -8,9 +8,18 @@ The project is a BlogPost where users can post Blogs based on their interest. Wi
 
 ## Features
 
-- [CRUD]: [Create Read Update Delete]
+- View blogs posted by others
+- Signup
+- Login
+- CRUD: Create Read Update Delete
+- Login Based Actions: Create Update Delete
 <!-- - [Feature 2]: [Description of the feature]
 - [Feature 3]: [Description of the feature] -->
+
+Upcoming Features:
+
+- Comments
+- Tags
 
 ## Contributing
 
