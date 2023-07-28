@@ -86,7 +86,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'geekspeak',
        'USER': 'postgres',
-       'PASSWORD': os.getenv('DB_PASSWORD'),
+       'PASSWORD': '',
        'HOST': 'localhost',
        'PORT': '5432',
    }
@@ -138,3 +138,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/blogs/blog'
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
