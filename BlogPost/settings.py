@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'BlogPost.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'geekspeak',
+       'NAME': '',
        'USER': 'postgres',
        'PASSWORD': '',
        'HOST': 'localhost',
