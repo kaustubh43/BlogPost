@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static 'assets/img/CreateBlog.jpg' %}');">
+    <div class="container position-relative px-10 px-lg-10">
+        <div class="row gx-8 gx-lg-8 justify-content-center">
+            <div class="col-md-20 col-lg-16 col-xl-16">
+                <div class="page-heading">
+                    <h1 style="font-size: 2.5em; text-align: center;">Add Comment</h1>
+                    <span class="subheading">Remember to add something constructive</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<form method="POST" id="contactForm">
+    {% csrf_token %}
+    <div class="form-floating">
+        <label for="text" class="form-label">Add your comment here</label>
+        {{ form.text }}
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary my-5">Submit</button>
+    </div>
+</form>
+{% if form.errors %}
+<div class="alert alert-danger my-5">
+    {% for field_errors in form.errors %}
+    {% for error in field_errors %}
+    {{ error }}
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
