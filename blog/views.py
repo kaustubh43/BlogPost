@@ -20,9 +20,10 @@ class AccessDenied(TemplateView):
 class BlogComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
-    # success_url = '/blogs/blog'
+    success_url = '/blogs/blog'
     template_name = 'blog/blog_add_comment.html'
     login_url = '/login'
+    http_method_names = ['get', 'post']
 
     def form_valid(self, form):
         # Set the author to the currently logged-in user
@@ -36,6 +37,10 @@ class BlogComment(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('blog.details', args=[self.object.blog_id])
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
+        return context
 
 class BlogDeleteView(DeleteView):
     model = Blog

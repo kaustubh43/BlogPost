@@ -12,6 +12,7 @@ urlpatterns = [
     path('blog/<int:pk>/accessdenied',views.AccessDenied.as_view(), name='blog.accessdenied'),
     path('blog/<int:blog_id>/addcomment', views.BlogComment.as_view(), name='blog.addcomment')
 
+
 ]
 
 handler404 = 'blog.views.error_404_view'

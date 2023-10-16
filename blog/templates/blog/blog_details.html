@@ -80,11 +80,11 @@
         {% endfor %}
 
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.text }}
-            <button type="submit" class="btn btn-primary">Add Comment</button>
-        </form>
+<form method="post" action="{% url 'blog.addcomment' blog_id=blog.id %}">
+    {% csrf_token %}
+    {{ form.text }}
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+</form>
 
 
     </div>
