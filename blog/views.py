@@ -3,23 +3,49 @@ from typing import Any
 from django.forms.widgets import HiddenInput
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Blog
+from .models import Blog, Comment
 from django.http.response import HttpResponseRedirect
 from django.template import Context, loader
 from django.shortcuts import render
-from .forms import BlogForms
+from .forms import BlogForms, CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 class AccessDenied(TemplateView):
     template_name = 'blog/denied.html'
 
 
+class BlogComment(LoginRequiredMixin, CreateView):
+    model = Comment
+    form_class = CommentForm
+    success_url = '/blogs/blog'
+    template_name = 'blog/blog_add_comment.html'
+    login_url = '/login'
+    http_method_names = ['get', 'post']
+
+    def form_valid(self, form):
+        # Set the author to the currently logged-in user
+        form.instance.author = self.request.user
+        blog_id = self.kwargs.get('blog_id')
+        blog = get_object_or_404(Blog, pk=blog_id)
+        form.instance.blog = blog
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('blog.details', args=[self.object.blog_id])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
+        return context
+
 class BlogDeleteView(DeleteView):
     model = Blog
     success_url = '/blogs/blog'
     template_name = 'blog/blog_delete.html'
-
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()

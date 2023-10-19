@@ -64,4 +64,30 @@
     }
 </script>
 
+<!-- Add a section for comments -->
+<section class="comments text-center">
+    <h2>Comments</h2>
+    <div class="comment-container">
+        {% for comment in blog.comments.all %}
+        <div class="comment-box">
+            <div class="comment">
+                <p>{{ comment.text }}</p>
+                <p class="comment-meta">Comment by: {{ comment.author }}</p>
+                <p class="comment-meta">Posted on: {{ comment.created_at }}</p>
+            </div>
+        </div>
+        <h3> </h3>
+        {% endfor %}
+
+
+<form method="post" action="{% url 'blog.addcomment' blog_id=blog.id %}">
+    {% csrf_token %}
+    {{ form.text }}
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+</form>
+
+
+    </div>
+</section>
+
 {% endblock %}

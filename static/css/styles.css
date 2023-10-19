@@ -10796,3 +10796,16 @@ header.masthead .post-heading .meta a {
     font-size: 2.25rem;
   }
 }
+.comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the comment box horizontally */
+}
+
+.comment-meta {
+    font-size: 14px;
+    color: #555;
+}
