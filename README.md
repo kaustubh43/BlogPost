@@ -1,10 +1,8 @@
-# BlogPost
-
-<!-- ![Project Logo](link-to-project-logo) -->
+# [Geekspeak - A Blog posting website](http://54.172.12.254/)
 
 ## Description
 
-The project is a BlogPost where users can post Blogs based on their interest. Will be built using Django.
+The project is a BlogPost where users can post Blogs based on their interest. Built using Django.
 
 ## Features
 
@@ -12,13 +10,13 @@ The project is a BlogPost where users can post Blogs based on their interest. Wi
 - Signup
 - Login
 - CRUD: Create Read Update Delete
-- Login Based Actions: Create Update Delete
+- Login Based Actions: Create Update Delete and Comment
+- NEW FEATURE - Comment!
 <!-- - [Feature 2]: [Description of the feature]
 - [Feature 3]: [Description of the feature] -->
 
 Upcoming Features:
 
-- Comments
 - Tags
 
 ## Contributing
@@ -40,6 +38,8 @@ Contributions are welcome! If you would like to contribute to this project, plea
 
 [List any credits or acknowledgments for external resources or contributions]
 
+-->
+
 ## Contact
 
-If you have any questions, suggestions, or feedback, feel free to reach out to me at [your email address]. -->
+If you have any questions, suggestions, or feedback, feel free to reach out to me [here](https://kaustubh43.pythonanywhere.com/contact.html).
